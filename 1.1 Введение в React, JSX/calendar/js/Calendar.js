@@ -1,7 +1,7 @@
 function Calendar({date}) {
 
     const firstMonthDay = new Date(Date.parse(`${date.getFullYear()}-${date.getMonth() + 1}-01`));
-    
+
     let firstCalendarDate = firstMonthDay;
     if (firstCalendarDate.getDay() > 1) {
         firstCalendarDate = new Date(firstCalendarDate.getTime() - (firstCalendarDate.getDay() - 1) * 24 * 60 * 60 * 1000);
@@ -13,7 +13,7 @@ function Calendar({date}) {
             weekData.push(new Date(startDay.getTime() + i * 86400000));
         }
         let week = weekData.map((date, index) => {
-            if (date.getTime() === (new Date()).setHours(0,0,0,0)) {
+            if (date.getTime() === (new Date()).setHours(0, 0, 0, 0)) {
                 return (
                     <td key={index} className="ui-datepicker-today">{date.getDate()}</td>
                 );
