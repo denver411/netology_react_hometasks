@@ -4,7 +4,7 @@ function Stars({count}) {
   const starQuantity = [];
   if ( typeof(count) === 'number' && count > 0 && count <= 5 ) {
     for (let i = 0; i < count; i++){
-      starQuantity.push(<li><Star /></li>);
+      starQuantity.push(<li key={i}><Star /></li>);
     }  
   } 
   return (

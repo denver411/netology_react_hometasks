@@ -21,7 +21,7 @@ const Listing = ({ items }) => {
 
 
     return (
-       <div className="item">
+       <div key={item.listing_id} className="item">
         <div className="item-image">
           <a href={item.url}>
             <img src={item.MainImage.url_570xN} />
@@ -30,7 +30,7 @@ const Listing = ({ items }) => {
         <div className="item-details">
             <p className="item-title">{ description }</p>
             <p className="item-price">{ priceShow }</p>
-            <p className={quantityClass}>{ item.quantity } left</p>
+            <p className={ quantityClass }>{ item.quantity } left</p>
         </div>
       </div>
     )
@@ -38,7 +38,7 @@ const Listing = ({ items }) => {
 
   return (
     <div className="item-list">
-      {itemList}
+      { itemList }
     </div>
   )
 }
