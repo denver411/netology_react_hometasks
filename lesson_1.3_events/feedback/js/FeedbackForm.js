@@ -4,7 +4,7 @@ const FeedbackForm = (props)=>{
 function onSubmit(event) {
   event.preventDefault();
   const elements = event.currentTarget.elements;
-  console.log(elements);
+
   const formData = {
     'salutation': elements.salutation.value,
     'name': elements.name.value,
