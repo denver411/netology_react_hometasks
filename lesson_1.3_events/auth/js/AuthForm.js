@@ -15,16 +15,6 @@ const AuthForm = ({ onAuth }) => {
     }
   }
 
-  function getEmail(event){
-    const field = event.currentTarget;
-    field.value = (field.value).match(/[a-z0-9_\.\-@]+/gi);
-  }
-
- function getPass(event){
-    const field = event.currentTarget;
-    field.value = (field.value).match(/[a-z0-9_]+/gi);
-  }
-
   return (
     <form onSubmit={onSubmit} class="ModalForm" action="/404/auth/" method="POST">
       <div className="Input">
@@ -45,4 +35,14 @@ const AuthForm = ({ onAuth }) => {
       </button>
     </form>
   )
+}
+
+function getEmail(event){
+  const field = event.currentTarget;
+  field.value = (field.value).match(/[a-z0-9_\.\-@]+/gi);
+}
+
+function getPass(event){
+  const field = event.currentTarget;
+  field.value = (field.value).match(/[a-z0-9_]+/gi);
 }
