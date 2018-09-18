@@ -6,9 +6,9 @@ const AuthForm = ({ onAuth }) => {
     event.preventDefault();
     const elements = event.currentTarget.elements;
     const formData = {
-      name: elements[0].value,
-      email: elements[1].value,
-      password: elements[2].value
+      'name': elements.name.value,
+      'email': elements.email.value,
+      'password': elements.password.value
     }
     if (onAuth && typeof(onAuth) === 'function'){
       onAuth(formData);
@@ -28,15 +28,15 @@ const AuthForm = ({ onAuth }) => {
   return (
     <form onSubmit={onSubmit} class="ModalForm" action="/404/auth/" method="POST">
       <div className="Input">
-        <input required type="text" placeholder="Имя" />
+        <input required type="text" placeholder="Имя" name="name" />
         <label></label>
       </div>
       <div className="Input">
-        <input onChange={getEmail} type="email" placeholder="Электронная почта" />
+        <input onChange={getEmail} type="email" placeholder="Электронная почта" name="email" />
         <label></label>
       </div>
       <div className="Input">
-        <input onChange={getPass} required type="password" placeholder="Пароль" />
+        <input onChange={getPass} required type="password" placeholder="Пароль" name="password" />
         <label></label>
       </div>
       <button type="submit">
