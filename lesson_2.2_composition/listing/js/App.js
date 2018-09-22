@@ -6,7 +6,7 @@ const ColorItem = ({item}) => {
     male: "blue",
     female: "orange"
   };
-  const colorProp = color[item.type] ? color[item.type] : 'unisex';
+  const colorProp = color[item.type] ? color[item.type] : 'black';
   return <Item color={colorProp} item={item} />;
 };
 
