@@ -13,7 +13,9 @@ function onSubmit(event) {
     'message': elements.message.value,
     'snacks': Array.from(elements.snacks).filter(item => item.checked).map(item => item.value)
   }
-  props.onSubmit(JSON.stringify(formData)); 
+  if (props.onSubmit && typeof(props.onSubmit) === 'function') {
+    props.onSubmit(JSON.stringify(formData)); 
+  }
 }
 
 return (

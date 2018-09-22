@@ -2,7 +2,7 @@
 
 const AuthForm = ({ onAuth }) => {
 
-  function onSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
     const elements = event.currentTarget.elements;
     const formData = {
@@ -16,17 +16,17 @@ const AuthForm = ({ onAuth }) => {
   }
 
   return (
-    <form onSubmit={onSubmit} class="ModalForm" action="/404/auth/" method="POST">
+    <form onSubmit={handleSubmit} class="ModalForm" action="/404/auth/" method="POST">
       <div className="Input">
         <input required type="text" placeholder="Имя" name="name" />
         <label></label>
       </div>
       <div className="Input">
-        <input onChange={getEmail} type="email" placeholder="Электронная почта" name="email" />
+        <input onChange={handleEmailChange} type="email" placeholder="Электронная почта" name="email" />
         <label></label>
       </div>
       <div className="Input">
-        <input onChange={getPass} required type="password" placeholder="Пароль" name="password" />
+        <input onChange={handlePasswordChange} required type="password" placeholder="Пароль" name="password" />
         <label></label>
       </div>
       <button type="submit">
@@ -37,12 +37,12 @@ const AuthForm = ({ onAuth }) => {
   )
 }
 
-function getEmail(event){
+function handleEmailChange(event){
   const field = event.currentTarget;
-  field.value = (field.value).match(/[a-z0-9_\.\-@]+/gi);
+  field.value = (field.value).match(/[\w\.\-@]+/gi);
 }
 
-function getPass(event){
+function handlePasswordChange(event){
   const field = event.currentTarget;
-  field.value = (field.value).match(/[a-z0-9_]+/gi);
+  field.value = (field.value).match(/[\w]+/gi);
 }
