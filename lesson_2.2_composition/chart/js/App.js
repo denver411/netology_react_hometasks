@@ -133,7 +133,7 @@ class ChartItem extends React.Component {
 		return (
 			<div props={this.state} className={"Charts " + className.chart}>
 		{ data.map((serie, serieIndex) => {
-			var sortedSerie = serie.slice(0), sum;
+			let sortedSerie = serie.slice(0), sum;
 	
 			sum = serie.reduce((carry, current) => carry + current, 0);
 			sortedSerie.sort(compareNumbers);
@@ -145,7 +145,7 @@ class ChartItem extends React.Component {
 				>
 				<label>{ labels[serieIndex] }</label>
 				{ serie.map((item, itemIndex) => {
-					var color = colors[itemIndex], style
+					let color = colors[itemIndex], style
 	
 					style = {
 						backgroundColor: color,
