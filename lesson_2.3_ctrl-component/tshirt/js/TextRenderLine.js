@@ -4,14 +4,14 @@ const TextRenderLine = ({ value, onChange }) => {
   };
   return (
     <div className="type-text">
-      <textaЕфыrea
+      <textarea
         value={value}
         onChange={handleChange}
         name="text"
         id="font-text"
         cols="30"
         rows="2"
-        placeholder="Введите текст для футболкиЕфы"
+        placeholder="Введите текст для футболки"
       />
     </div>
   );
