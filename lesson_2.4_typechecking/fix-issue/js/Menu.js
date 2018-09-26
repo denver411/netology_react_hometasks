@@ -34,5 +34,5 @@ Menu.propTypes = {
   items: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired
-  })),
+  }))
 };
