@@ -18,9 +18,12 @@ const FontSelector = props => {
               value={item.name}
               name="font"
               id={item.name}
+              defaultChecked={
+                props.selected && props.selected.name === item.name
+              }
             />
             <label htmlFor={item.name} class="grid-1">
-              <PictureFont text={item.name.slice(0, 3)} path={item.path} />
+              <PictureFont text="abc" path={item.path} />
             </label>
           </div>
         );
