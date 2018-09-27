@@ -10,7 +10,7 @@ const FontSelector = props => {
     <div className="font-picker">
       {props.fonts.map(item => {
         return (
-          <div className="grid center font-item">
+          <div key={item.name} className="grid center font-item">
             <input
               onChange={handleChange}
               type="radio"
