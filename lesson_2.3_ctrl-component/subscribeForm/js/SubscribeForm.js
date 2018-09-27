@@ -16,7 +16,7 @@ class SubscribeForm extends React.Component {
     const formClassName = this.state.isValid ? 'is-valid' : 'is-error';
     return (
         <div className="subscribe__form">
-          <form onChange={this.handleFormCheck} className={`form form--subscribe ${formClassName }`}>
+          <form onChange={this.handleFormCheck} className={`form form--subscribe ${formClassName}`}>
             <h4 className="form-title">Подписаться:</h4>
             <div className="form-group">
             <label htmlFor="input-email" className="sr-only">Email</label>
