@@ -2,7 +2,7 @@ class ProgressBar extends React.Component {
   render() {
     return <canvas id="progressCanvas" className="progress" />;
   }
-  componentWillReceiveProps() {
+  componentDidUpdate() {
     this.drawCanvas();
   }
 
@@ -11,7 +11,7 @@ class ProgressBar extends React.Component {
   }
 
   drawCanvas = () => {
-    console.log(this.props)
+    console.log(this.props);
     const { total, completed } = this.props;
     const progress = completed / total;
     const canvas = document.getElementById('progressCanvas');
