@@ -92,9 +92,11 @@ const changeData = (...arg) => {
           }
         }
       });
+      
       return yearsResults;
 
     case 'date':
+    
       return list;
   }
 };
