@@ -42,7 +42,7 @@ const changeData = (...arg) => {
   const [{ list }, type] = arg;
   list.sort((a, b) => new Date(a.date) - new Date(b.date));
   const listDateFormatted = list.map(item => {
-    const date = new Date(Date.parse(item.date));
+    const date = new Date(parseDate(item.date));
     return { date: date, amount: item.amount };
   });
 
@@ -100,3 +100,13 @@ const changeData = (...arg) => {
       return list;
   }
 };
+
+//Специально для Сафари
+function parseDate(date) {
+  const parsed = Date.parse(date);
+  if (!isNaN(parsed)) {
+    return parsed;
+  }
+
+  return Date.parse(date.replace(/-/g, '/').replace(/[a-z]+/gi, ' '));
+}
