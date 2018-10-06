@@ -40,10 +40,15 @@ const SortedDateTable = preparedData(SortTable, 'date');
 
 const changeData = (...arg) => {
   const [{ list }, type] = arg;
-  // console.log(list, type);
+  list.sort((a, b) => new Date(a.date) - new Date(b.date));
+  const listDateFormatted = list.map(item => {
+    const date = new Date(Date.parse(item.date));
+    return { date: date, amount: item.amount };
+  });
+
   switch (type) {
     case 'month':
-      const monthName = [
+      const monthsNames = [
         'Jan',
         'Feb',
         'Mar',
@@ -57,17 +62,15 @@ const changeData = (...arg) => {
         'Nov',
         'Dec'
       ];
-
       const monthsResults = [];
-      const thisYearData = list.filter(
-        item =>
-          new Date(Date.parse(item.date)).getFullYear() ===
-          new Date().getFullYear()
+      const thisYearData = listDateFormatted.filter(
+        item => item.date.getFullYear() === new Date().getFullYear()
       );
-      for (let month of monthName) {
+
+      for (let month of monthsNames) {
         let amount = 0;
-        thisYearData.map(item => {
-          if (monthName[new Date(Date.parse(item.date)).getMonth()] === month) {
+        thisYearData.forEach(item => {
+          if (monthsNames[item.date.getMonth()] === month) {
             amount += item.amount;
           }
         });
@@ -77,40 +80,21 @@ const changeData = (...arg) => {
       return monthsResults;
 
     case 'year':
-      const years = [];
-      list.forEach(item => {
-        const date = new Date(Date.parse(item.date));
-        if (!years.some(i => i.year == date.getFullYear())) {
-          years.push({ year: date.getFullYear(), amount: item.amount });
+      const yearsResults = [];
+      listDateFormatted.forEach(item => {
+        if (!yearsResults.some(i => i.year === item.date.getFullYear())) {
+          yearsResults.push({ year: item.date.getFullYear(), amount: item.amount });
         } else {
-          for (let year of years) {
-            if (year.year == date.getFullYear()) {
+          for (let year of yearsResults) {
+            if (year.year === item.date.getFullYear()) {
               year.amount += item.amount;
             }
           }
         }
       });
-      return years.sort((a, b) => a.year - b.year);
+      return yearsResults;
 
     case 'date':
-      return list
-        .map(item => {
-          const date = new Date(Date.parse(item.date));
-          return { date: date, amount: item.amount };
-        })
-        .sort((a, b) => a.date - b.date)
-        .map(item => {
-          const date = formatDate(item.date);
-          return { date: date, amount: item.amount };
-        });
+      return list;
   }
-};
-
-const formatDate = date => {
-  const day = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-  const month =
-    date.getMonth() + 1 < 10
-      ? '0' + (date.getMonth() + 1)
-      : date.getMonth() + 1;
-  return date.getFullYear() + '-' + month + '-' + day;
 };
