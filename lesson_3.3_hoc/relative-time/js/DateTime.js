@@ -16,7 +16,7 @@ const TimePrettier = Component => {
 const DateTimePretty = TimePrettier(DateTime);
 
 const toPrettyDate = date => {
-  let delay = Date.now() - Date.parse(date);
+  let delay = Date.now() - new Date(Date.parse(date));
 
   if (delay > 24 * 60 * 60 * 1000) {
     return (delay / (24 * 60 * 60 * 1000)).toFixed(0) + ' дней назад';
