@@ -8,3 +8,5 @@ const Video = props => {
         </div>
     )
 };
+
+const LabelVideo = Label(Video);
