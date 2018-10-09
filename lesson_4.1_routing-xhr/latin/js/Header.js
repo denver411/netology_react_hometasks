@@ -7,4 +7,5 @@ const HeaderComponent = ({ match }) => (
   </nav>
 );
 
+const {withRouter} = window.ReactRouterDOM;
 const Header = withRouter(HeaderComponent);
