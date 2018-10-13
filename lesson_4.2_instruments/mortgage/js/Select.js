@@ -20,7 +20,7 @@ const Autocomplete = () => (
     <br />
     <Select
     showSearch
-    style={{ width: "30%" }}
+    style={{ width: "300px" }}
     defaultValue="on-build-apartment"
     placeholder="Выберите тип квартиры"
     optionFilterProp="children"
