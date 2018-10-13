@@ -61,7 +61,7 @@ class InputField extends React.Component {
             min={0}
             onChange={this.onChange}
             value={this.state.value}
-            style={{ width: "300px" }}
+            style={{ width: "240px" }}
           />
           {this.props.textAfter}
         </label>
