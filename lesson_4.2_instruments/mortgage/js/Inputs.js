@@ -1,17 +1,71 @@
-const Inputs = () => (
-  <div>
-    <label>
-      Стоимость: <input type="number" name="price" value="2000000"/> руб.
-    </label>
-    <br/>
-    <label>
-      На руках:
-      <input type="number" name="money" value="200000"/> руб.
-    </label>
-    <br/>
-    <label>
-      Срок кредита:
-      <input type="number" name="duration" value="5"/> лет.
-    </label>
-  </div>
-);
+const { InputNumber } = window['antd'];
+
+const Input = () => {
+  return (
+    <div>
+      <InputField
+        textBefore="Стоимость: "
+        textAfter=" руб."
+        type="number"
+        name="price"
+        value="2000000"
+        placeholder="Введите сумму"
+        maxLength="25"
+      />
+      <InputField
+        textBefore="На руках: "
+        textAfter=" руб."
+        type="number"
+        name="money"
+        value="200000"
+        placeholder="Введите сумму"
+        maxLength="25"
+      />
+      <InputField
+        textBefore="Срок кредита: "
+        textAfter=" лет."
+        type="number"
+        name="duration"
+        value="5"
+        placeholder="Введите сумму"
+        maxLength="25"
+        step="1"
+      />
+    </div>
+  );
+};
+
+class InputField extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: this.props.value
+    };
+  }
+
+  onChange = e => {
+    this.setState({
+      value: e
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <label>
+          {this.props.textBefore}
+          <br />
+          <InputNumber
+            step="1000"
+            {...this.props}
+            min={0}
+            onChange={this.onChange}
+            value={this.state.value}
+            style={{ width: '30%' }}
+          />
+          {this.props.textAfter}
+        </label>
+      </div>
+    );
+  }
+}
