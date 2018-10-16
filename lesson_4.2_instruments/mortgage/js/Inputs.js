@@ -39,13 +39,13 @@ class InputField extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: this.props.value
+      value: props.value
     };
   }
 
-  onChange = e => {
+  onChange = value => {
     this.setState({
-      value: e
+      value
     });
   };
 
@@ -61,7 +61,7 @@ class InputField extends React.Component {
             min={0}
             onChange={this.onChange}
             value={this.state.value}
-            style={{ width: "240px" }}
+            style={{ width: '240px' }}
           />
           {this.props.textAfter}
         </label>

@@ -23,13 +23,12 @@ class Reader extends React.Component {
   turnThePage(nav) {
     console.log(nav);
     let page = this.state.currentPage + nav;
-    page =
-      page < 1
-        ? 1
-        : page > this.state.pages.length
-          ? this.state.pages.length
-          : page;
-
+    if (page < 1) {
+      page = 1;
+    }
+    if (page > this.state.pages.length) {
+      page = this.state.pages.length;
+    }
     this.setState({ currentPage: page });
   }
 }
