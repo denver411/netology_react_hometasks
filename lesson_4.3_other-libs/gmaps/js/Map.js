@@ -1,26 +1,26 @@
 class Map extends React.Component {
-  getMap = office => {
-    const center = {lat: office.lat, lng: office.lon};
-    
-    const map = new google.maps.Map(document.querySelector('.mapContainer'), { zoom: 4, center: center });
-
-    // const marker = new google.maps.Marker({ position: center, map: map });
-    // return map;
-  };
-
   componentDidMount() {
     const office = this.props.points[0];
-    const center = {lat: office.lat, lng: office.lon};  
-    console.log(center);
+    const center = { lat: office.lat, lng: office.lon };
     this.map = new google.maps.Map(this.node, {
-      center: center,
-      zoom: 4
-    })
-    this.props.points.map(office => {
-      const marker = {lat: office.lat, lng: office.lon};
-      new google.maps.Marker({ position: marker, map: this.map })
-    })
+      center: { lat: 30, lng: 0 },
+      zoom: 2
+    });
+    this.getMapPoints(this.props.points);
+  }
 
+  getMapPoints = points => {
+    points.map(office => {
+      const marker = { lat: office.lat, lng: office.lon };
+      new google.maps.Marker({ position: marker, map: this.map });
+    });
+  };
+
+  componentWillReceiveProps(newProps) {
+    //проверка координат на идентичность
+    if (JSON.stringify(newProps.points) === JSON.stringify(this.props.points))
+      return;
+    this.getMapPoints(newProps.points);
   }
   render() {
     return (
