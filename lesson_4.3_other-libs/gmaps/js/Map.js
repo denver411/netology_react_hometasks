@@ -1,7 +1,10 @@
 class Map extends React.Component {
+  constructor(props) {
+    super(props);
+    this.offices = [];
+  }
+
   componentDidMount() {
-    const office = this.props.points[0];
-    const center = { lat: office.lat, lng: office.lon };
     this.map = new google.maps.Map(this.node, {
       center: { lat: 30, lng: 0 },
       zoom: 2
@@ -11,15 +14,23 @@ class Map extends React.Component {
 
   getMapPoints = points => {
     points.map(office => {
-      const marker = { lat: office.lat, lng: office.lon };
-      new google.maps.Marker({ position: marker, map: this.map });
+      const marker = new google.maps.Marker({
+        position: { lat: office.lat, lng: office.lon },
+        map: this.map
+      });
+      this.offices.push(marker);
+    });
+  };
+
+  removeMapPoints = points => {
+    points.forEach(office => {
+      office.setMap(null);
+      this.offices = [];
     });
   };
 
   componentWillReceiveProps(newProps) {
-    //проверка координат на идентичность
-    if (JSON.stringify(newProps.points) === JSON.stringify(this.props.points))
-      return;
+    this.removeMapPoints(this.offices);
     this.getMapPoints(newProps.points);
   }
   render() {
