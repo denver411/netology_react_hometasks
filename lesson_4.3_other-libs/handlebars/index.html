@@ -29,12 +29,12 @@
     </header>
     
     <main class="container">
-      {{#each articles}}
+      <!-- {{#each articles}}
         <article class="article">
           <h2>{{subject}}</h1>
           <p>{{body}}</p>
         </article>
-      {{/each}}
+      {{/each}} -->
     </main>
   </script>
 
@@ -43,14 +43,17 @@
   <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
   <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
-  <script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 
   <script src="./js/articles.js"></script>
   <script src="./js/application.js"></script>
+  <script type="text/babel" src="./js/react/Article.jsx"></script>
+  <script type="text/babel" src="./js/react/Articles.jsx"></script>
+  <!-- <script type="text/babel">
+    
+  </script> -->
 </body>
 
 </html>
