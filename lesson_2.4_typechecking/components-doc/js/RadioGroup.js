@@ -31,7 +31,9 @@ const RadioGroup = props => {
 };
 
 RadioGroup.propTypes = {
+  label: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
-  value: PropTypes.string
+  value: PropTypes.string,
+  list: PropTypes.arrayOf(PropTypes.string)
 };
